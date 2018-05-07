@@ -51,7 +51,7 @@ module.exports = {
         use: {
           loader: 'file-loader',
           options: {
-            name: `fonts/[name].[ext]?v=${version}`,
+            name: `fonts/[name].[ext]`,
           },
         },
         include: [
