@@ -56,9 +56,10 @@ document.getElementById('copy-hash').addEventListener('click', () => {
  * verify if password and hash are valid
  */
 
-let hash, password;
-
-const verify = (password, hash) => {
+const verify = ({ keyCode }) => {
+  if (13 !== keyCode) return;
+  const hash = document.getElementById('a-hash').value;
+  const password = document.getElementById('a-password').value;
   bcrypt.compare(password, hash, (err, res) => {
     if (err) {
       console.error(err);
@@ -69,23 +70,17 @@ const verify = (password, hash) => {
   });
 };
 
-document.getElementById('a-hash').addEventListener('keypress', ({ keyCode, target }) => {
-  if (13 !== keyCode) return;
-  hash = target.value;
-  verify(password, hash);
-}, false);
+document
+  .getElementById('a-hash')
+  .addEventListener('keypress', verify, false);
 
-document.getElementById('a-password').addEventListener('keypress', ({ keyCode, target }) => {
-  if (13 !== keyCode) return;
-  password = target.value;
-  verify(password, hash);
-}, false);
+document
+  .getElementById('a-password')
+  .addEventListener('keypress', verify, false);
 
-document.querySelector('#verify').addEventListener('click', () => {
-  hash = document.getElementById('a-hash').value;
-  password = document.getElementById('a-password').value;
-  verify(password, hash);
-}, false);
+document
+  .querySelector('#verify')
+  .addEventListener('click', verify, false);
 
 /**
  * cleanup fields
