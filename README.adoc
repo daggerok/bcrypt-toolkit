@@ -1,0 +1,19 @@
+= BCrypt Toolkit image:https://travis-ci.org/daggerok/bcrypt-toolkit.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/bcrypt-toolkit"]
+
+- generate bcrypt hash from password
+- verify hash + password
+
+[sources,bash]
+----
+yarn -i
+yarn build
+yarn start
+
+open http://127.0.0.1:3000/
+
+yarn deploy
+----
+
+links:
+
+- link:https://github.com/webpack-contrib/mini-css-extract-plugin[nice css extract plugin]
